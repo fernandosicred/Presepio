@@ -11,23 +11,30 @@
 <style>
 :root{
   color-scheme: light;
-  --creme:#FFF4DB;
-  --branco:#FFFFFF;
-  --texto:#2B1A10;
-  --titulo:#3A1D0C;
-  --suave:#4E3D30;
-  --verde:#1C7550;
-  --verde-escuro:#145A3D;
-  --vermelho:#B3121B;
-  --azul:#173E8C;
-  --estrela:#E0A100;
-  --linha:#B89A63;
+  /* Paleta: fundo creme e bege claro, madeira natural, verde sálvia, detalhes em azul suave */
+  --creme:#F6F0E4;
+  --bege:#EDE3D2;
+  --branco:#FFFDF9;
+  --texto:#3B2F25;
+  --titulo:#4A3828;
+  --suave:#5F5246;
+  --madeira:#A9855E;
+  --madeira-clara:#D9C4A3;
+  --verde:#4E6E55;
+  --verde-escuro:#3E5A45;
+  --salvia-clara:#DCE5D8;
+  --vermelho:#4E6E55;     /* antigo vermelho: agora sálvia, para tirar o excesso de vermelho */
+  --riscado:#A0675A;      /* único toque quente: o preço riscado */
+  --azul:#4F6F94;
+  --azul-claro:#DCE6EF;
+  --estrela:#C9A15F;
+  --linha:#C9B391;
   --pend:#B4462F;
   --pend-fundo:#FDEBE5;
   --raio-g:24px;
   --raio-m:16px;
   --raio-p:10px;
-  --sombra:0 6px 20px rgba(80,60,30,.10);
+  --sombra:0 6px 20px rgba(74,56,40,.08);
   box-sizing:border-box;
   padding-top:env(safe-area-inset-top,0px);
   padding-bottom:env(safe-area-inset-bottom,0px);
@@ -50,9 +57,9 @@ a{color:var(--verde-escuro)}
 :focus-visible{outline:3px solid var(--estrela);outline-offset:3px;border-radius:6px}
 
 .wrap{width:100%;max-width:680px;margin:0 auto;padding:0 24px}
-:root{--borda-quadro:2px solid #F0DDB5}
+:root{--borda-quadro:2px solid #E6DAC5}
 .sec{padding:64px 0}
-.sec--branco{background:var(--branco)}
+.sec--branco{background:var(--bege)}
 .sec__intro{max-width:640px;margin:0 auto 36px;text-align:center}
 .sec__intro p{margin-top:12px;color:var(--suave)}
 
@@ -68,11 +75,11 @@ a{color:var(--verde-escuro)}
   padding:10px 16px;padding-top:calc(10px + env(safe-area-inset-top,0px));box-shadow:0 2px 10px rgba(0,0,0,.15)}
 .urgencia__in{max-width:680px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:10px 16px;flex-wrap:wrap;text-align:center}
 .urgencia p{font-size:.95rem;line-height:1.35;font-weight:500}
-.urgencia strong{font-weight:700;color:#FFE08A}
-.urgencia svg{width:18px;height:18px;color:#FFD34D;vertical-align:-3px;margin-right:4px}
+.urgencia strong{font-weight:700;color:#F3E7CB}
+.urgencia svg{width:18px;height:18px;color:var(--madeira-clara);vertical-align:-3px;margin-right:4px}
 .urgencia a{display:inline-flex;align-items:center;min-height:36px;padding:6px 16px;border-radius:999px;background:#fff;
   color:var(--vermelho);font-weight:700;font-size:.9rem;text-decoration:none;white-space:nowrap}
-.urgencia a:hover{background:#FFF4DB}
+.urgencia a:hover{background:var(--creme)}
 @media (max-width:599px){
   .urgencia{padding:8px 12px;padding-top:calc(8px + env(safe-area-inset-top,0px))}
   .urgencia__in{flex-wrap:nowrap;justify-content:space-between;text-align:left;gap:10px}
@@ -80,7 +87,7 @@ a{color:var(--verde-escuro)}
   .urgencia__extra{display:none}
   .urgencia a{min-height:34px;padding:6px 12px;font-size:.85rem}
 }
-.urgencia a:focus-visible{outline:3px solid #FFD34D}
+.urgencia a:focus-visible{outline:3px solid var(--madeira-clara)}
 
 /* Botões */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:56px;padding:14px 28px;
@@ -100,24 +107,31 @@ a{color:var(--verde-escuro)}
 
 /* Placeholder de imagem */
 .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;text-align:center;
-  background:repeating-linear-gradient(135deg,#FBF1DD 0 14px,#F6E7C8 14px 28px);color:var(--pend);
+  background:repeating-linear-gradient(135deg,#F6F0E4 0 14px,#EDE3D2 14px 28px);color:var(--pend);
   border-radius:calc(var(--raio-g) - 8px);padding:16px;width:100%;height:100%;min-height:160px}
 .ph strong{font-size:.95rem}
 .ph small{color:var(--suave);font-size:.82rem;line-height:1.35}
 .foto{border-radius:calc(var(--raio-g) - 8px);width:100%;height:100%;object-fit:cover}
 
 /* Hero */
-.hero{padding:48px 0 64px}
-.hero__grid{max-width:680px}
-.hero__texto{text-align:center}
-.hero__sub{margin-top:18px;font-size:1.1rem;color:var(--texto);font-weight:500}
+.hero{padding:0 0 56px;background:linear-gradient(var(--bege),var(--creme) 70%)}
+.hero__foto{margin:0 auto;max-width:620px}
+.hero__foto img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;object-position:50% 46%;max-width:100%}
+.hero__foto figcaption{font-size:.8rem;color:var(--suave);text-align:center;padding:8px 24px 0;line-height:1.4}
+.hero__texto{text-align:center;padding-top:18px}
+.hero h1{font-size:clamp(1.75rem,6.2vw,2.5rem)}
+.hero__sub{margin:12px auto 0;max-width:30em;font-size:1.05rem;color:var(--suave);font-weight:500}
+.hero__btn{margin-top:20px;max-width:100%}
+.hero__nota{margin:14px auto 0;display:inline-flex;gap:8px;align-items:flex-start;max-width:30em;text-align:left;
+  background:var(--azul-claro);color:#2F4A68;border-radius:var(--raio-p);padding:10px 14px;font-size:.92rem;font-weight:500;line-height:1.4}
+.hero__nota svg{width:18px;height:18px;flex:none;margin-top:1px;color:var(--azul)}
 .hero__apoio{margin:20px auto 0;display:flex;gap:10px;align-items:flex-start;max-width:520px;text-align:left;
   background:var(--branco);border:2.5px solid #F2C14E;border-radius:var(--raio-m);padding:12px 16px;
   color:var(--azul);font-weight:700;font-size:1rem;line-height:1.45;box-shadow:0 3px 0 #E9B23A}
 .hero__apoio svg{width:20px;height:20px;flex:none;color:var(--estrela);margin-top:2px}
-.cor-v{color:var(--vermelho)}
+.cor-v{color:var(--verde-escuro)}
 .cor-a{color:var(--azul)}
-.cor-d{color:#A86B00}
+.cor-d{color:#8A6A3E}
 h1 .cor-v,h1 .cor-a{white-space:nowrap}
 .hero__sub .cor-v,.hero__sub .cor-a{font-weight:700}
 /* Faixa vermelha, como a da capa */
@@ -159,7 +173,7 @@ h1 .cor-v,h1 .cor-a{white-space:nowrap}
 .carrossel__pausa{display:block;margin:6px auto 0;background:transparent;border:0;color:var(--suave);font:inherit;
   font-size:.85rem;text-decoration:underline;cursor:pointer;padding:6px 10px;min-height:32px}
 .carrossel__ponto{width:28px;height:28px;border:0;background:transparent;cursor:pointer;position:relative;padding:0}
-.carrossel__ponto::after{content:"";position:absolute;inset:9px;border-radius:50%;background:#E3D2AE;transition:background .2s}
+.carrossel__ponto::after{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--madeira-clara);transition:background .2s}
 .carrossel__ponto[aria-current="true"]::after{background:var(--vermelho);inset:7px}
 @media (prefers-reduced-motion:reduce){.carrossel__trilho{scroll-behavior:auto}}
 .galeria__btn{all:unset;display:block;cursor:zoom-in;border-radius:var(--raio-m);width:100%}
@@ -187,15 +201,15 @@ dialog img{max-height:82vh;width:auto;margin:0 auto}
 .etapa__img .ph{aspect-ratio:1/1;border-radius:0;min-height:0}
 .etapa__img .foto{width:100%;height:auto;object-fit:contain;border-radius:0}
 .etapa__txt{padding:16px 26px 28px;text-align:center}
-.etapa__num{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--vermelho);box-shadow:0 0 0 3px #F7D27A;color:#fff;
+.etapa__num{display:inline-flex;width:36px;height:36px;border-radius:50%;background:var(--verde);box-shadow:0 0 0 3px var(--salvia-clara);color:#fff;
   font-family:"Grandstander",sans-serif;font-weight:700;align-items:center;justify-content:center;flex:none}
 .etapa__txt p{color:var(--suave)}
 
 /* Benefícios */
 .beneficios{display:grid;gap:16px;margin:0 auto}
-.benef{padding:24px 24px 26px;border-radius:var(--raio-m);background:var(--creme);border:var(--borda-quadro);border-top:5px solid var(--vermelho);text-align:center}
+.benef{padding:24px 24px 26px;border-radius:var(--raio-m);background:var(--creme);border:var(--borda-quadro);border-top:5px solid var(--verde);text-align:center}
 .benef:nth-child(3n+2){border-top-color:var(--azul)}
-.benef:nth-child(3n){border-top-color:var(--estrela)}
+.benef:nth-child(3n){border-top-color:var(--madeira)}
 .benef p{margin-top:6px;color:var(--suave)}
 
 /* Conteúdo */
@@ -211,12 +225,13 @@ dialog img{max-height:82vh;width:auto;margin:0 auto}
 .nota{font-size:.95rem;color:var(--suave);margin-top:14px}
 
 /* Oferta */
+.oferta-capa{width:min(200px,60%);margin:0 auto 16px;border-radius:var(--raio-m);box-shadow:var(--sombra)}
 .oferta-card{max-width:520px;margin:0 auto;background:var(--branco);border-radius:var(--raio-g);
-  padding:34px 26px 28px;box-shadow:0 10px 30px rgba(35,131,96,.14);border:2.5px solid var(--verde);text-align:center}
+  padding:34px 26px 28px;box-shadow:0 10px 30px rgba(62,90,69,.12);border:2.5px solid var(--verde);text-align:center}
 .preco{font-family:"Grandstander",sans-serif;font-size:2.6rem;font-weight:700;color:var(--verde);margin:16px 0 4px;line-height:1.1}
 .cobranca{color:var(--texto);font-weight:500;margin-bottom:22px}
 .preco-de{margin-top:14px;color:var(--suave);font-weight:500}
-.preco-de s{color:var(--vermelho);text-decoration-thickness:2px}
+.preco-de s{color:var(--riscado);text-decoration-thickness:2px}
 .preco{font-size:3rem!important;margin-top:2px!important}
 .aviso strong{color:var(--verde-escuro)}
 .oferta-card .lista{text-align:left;margin:22px 0 26px;padding-top:22px;border-top:1.5px dashed var(--linha)}
@@ -238,7 +253,7 @@ dialog img{max-height:82vh;width:auto;margin:0 auto}
 
 /* Termos e privacidade */
 .link-doc{all:unset;cursor:pointer;text-decoration:underline;color:inherit}
-.link-doc:focus-visible{outline:3px solid #FFD34D;outline-offset:2px}
+.link-doc:focus-visible{outline:3px solid var(--madeira-clara);outline-offset:2px}
 dialog.doc{width:min(92vw,720px);max-height:86vh;padding:0;display:none;flex-direction:column}
 dialog.doc[open]{display:flex}
 .doc__barra{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:var(--borda-quadro)}
@@ -248,17 +263,19 @@ dialog.doc[open]{display:flex}
 .doc__corpo p{color:var(--texto)}
 
 /* Rodapé */
-.rodape{background:var(--titulo);color:#F3EADA;padding:44px 0 36px;font-size:.95rem}
-.rodape a{color:#F3EADA}
+.rodape{background:#3F3127;color:#F1E8DA;padding:44px 0 36px;font-size:.95rem}
+.rodape a{color:#F1E8DA}
 .rodape__grid{display:grid;gap:18px;text-align:center;justify-items:center}
 .rodape nav ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px}
 .rodape .btn--pend{min-height:auto;padding:4px 12px;font-size:.9rem;background:transparent;color:#F3EADA;border-color:#E9A28F}
 .rodape .btn--pend em{color:#F4B8A8}
 .rodape .tag-pend{background:transparent;color:#F4B8A8;border-color:#E9A28F}
-.rodape small{color:#C8BCA8}
+.rodape small{color:#CDBFAE}
 
 @media (min-width:760px){
-  .hero{padding:72px 0 88px}
+  .hero{padding:24px 0 80px}
+  .hero__foto{max-width:min(560px,46vh)}
+  .hero__foto img{border-radius:var(--raio-g);box-shadow:0 14px 40px rgba(74,56,40,.16)}
   .hero__texto{text-align:center}
   .destaques{justify-content:center}
   /* coluna única centralizada também no computador, como o modelo */
@@ -355,17 +372,20 @@ const CONFIG = {
 
   hero: {
     /* Destaques de cor, iguais aos da capa: {v:texto} vermelho, {a:texto} azul, {d:texto} dourado */
-    faixa: "Meu Presépio de Squishy",
+    faixa: "",   /* faixa acima do título: deixe "" para não mostrar */
     titulo: "Monte com os pequenos um {v:presépio fofinho} e cheio de significado neste {a:Natal}",
     subtitulo: "Um kit digital com {v:12 modelos}, nas versões {a:colorida e para colorir}, para imprimir, recortar e transformar em squishies de papel. Inclui passo a passo de montagem e orientações para criar o estábulo e a manjedoura.",
     apoio: "Papel, criatividade e um momento para viver juntos a história do nascimento de Jesus.",
     destaques: ["12 modelos com frente e verso", "Versões colorida e para colorir", "Moldes A4 e guia de montagem"],
-    cta: "Quero montar meu presépio"
+    cta: "Quero meu kit digital por {preco}",   /* {preco} usa o preço da oferta, para nunca ficar diferente */
+    nota: "PDF digital para imprimir em casa. Materiais físicos não incluídos.",
+    subtituloCurto: "12 personagens para imprimir, recortar e montar com as crianças, nas versões colorida e para colorir."
   },
 
   /* IMAGENS: coloque o caminho ou URL do arquivo em "src".
      Na página publicada, use imagens embutidas (data:) ou enviadas como asset. */
   imagens: {
+    heroFoto: { src: window.IMG_PRESEPIO_MONTADO, alt: "Presépio de papel montado com os personagens do kit dentro de um estábulo de papelão, com palha e luzinhas", legenda: "Exemplo montado com os moldes do kit. O estábulo e a decoração ficam por conta da sua criatividade, junto com os seus pequenos." },
     principal: { src: window.IMG_CAPA, alt: "Capa ilustrada do kit Meu Presépio de Squishy com os 12 personagens no estábulo e exemplos do molde de Maria nas versões colorida e para colorir", arquivo: "Meu_presépio_squishy_de_Natal.png" },
     exemplos: [
       /* A ordem aqui é a ordem do carrossel. Itens sem "src" só aparecem na prévia. */
@@ -448,7 +468,7 @@ const CONFIG = {
     titulo: "Garanta seu kit e comece a montar",
     nome: "Kit digital Meu Presépio de Squishy",
     precoDe: "R$ 67,90",   // preço já praticado antes; deixe "" para não mostrar o valor riscado
-    preco: "R$ 16,99",
+    preco: "R$ 16,90",
     cobranca: "Pagamento único · Pix ou cartão",
     itens: [
       "12 modelos em duas versões: colorida e para colorir",
@@ -573,17 +593,22 @@ function render(){
   let h = "";
 
   /* 1. Hero */
-  h += `<header class="hero"><div class="wrap hero__grid">
-    <div class="hero__texto">
+  const precoTxt = pendente(C.oferta.preco) ? "" : C.oferta.preco;
+  const ctaHero = C.hero.cta.replace("{preco}", precoTxt).replace(/ por\s*$/, "");
+  const HF = C.imagens.heroFoto;
+  h += `<header class="hero">
+    <figure class="hero__foto">
+      ${HF.src ? `<img src="${esc(HF.src)}" alt="${esc(HF.alt)}" fetchpriority="high" decoding="async">` : imagem(HF, "foto do topo")}
+      ${HF.legenda ? `<figcaption>${esc(HF.legenda)}</figcaption>` : ""}
+    </figure>
+    <div class="wrap hero__texto">
       ${C.hero.faixa ? `<p class="faixa"><span>${esc(C.hero.faixa)}</span></p>` : ""}
       <h1>${cor(C.hero.titulo)}</h1>
-      <div class="recorte hero__img">${icone.tesoura}${imagem(C.imagens.principal, "principal")}</div>
-      <p class="hero__sub">${cor(C.hero.subtitulo)}</p>
-      <p class="hero__apoio">${icone.estrela}<span>${cor(C.hero.apoio)}</span></p>
-      <ul class="destaques">${C.hero.destaques.slice(0,3).map(d => `<li>${icone.estrela}${esc(d)}</li>`).join("")}</ul>
-      <a class="btn" href="#oferta">${esc(C.hero.cta)}</a>
+      <p class="hero__sub">${cor(C.hero.subtituloCurto || C.hero.subtitulo)}</p>
+      <a class="btn hero__btn" href="#oferta">${esc(ctaHero)}</a>
+      <p class="hero__nota">${icone.check}<span>${esc(C.hero.nota)}</span></p>
     </div>
-  </div></header>`;
+  </header>`;
 
   /* 2. Galeria */
   h += `<section class="sec sec--branco" aria-labelledby="t-galeria"><div class="wrap">
@@ -665,6 +690,7 @@ function render(){
   h += `<section class="sec sec--branco" id="oferta" aria-labelledby="t-oferta"><div class="wrap">
     <div class="sec__intro"><h2 id="t-oferta">${esc(O.titulo)}</h2></div>
     <div class="oferta-card">
+      ${C.imagens.principal.src ? `<img class="oferta-capa" src="${esc(C.imagens.principal.src)}" alt="${esc(C.imagens.principal.alt)}" decoding="async">` : ""}
       <h3>${esc(O.nome)}</h3>
       ${O.precoDe ? `<p class="preco-de">De <s>${esc(O.precoDe)}</s> por</p>` : ""}
       <p class="preco">${pendente(O.preco) ? texto(O.preco, "Preço do kit") : esc(O.preco)}</p>
